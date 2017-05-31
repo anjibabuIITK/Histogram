@@ -10,9 +10,9 @@ gfortran histogram.f90
 
 ./a.out
 
-#N      xmin  xmax   width  input_filename      output_filename
+#N        xmin    xmax     width    input_filename        output_filename
 
-10000  -4.0   4.0    0.5     DISTRIBUTION.dat   out.dat
+10000    -4.0     4.0      0.5       DISTRIBUTION.dat     out.dat
 
 then, it will genarate a file called out.dat, that contains distribution data.
 
@@ -22,6 +22,9 @@ then u will see a distribution like attached pic. out.jpg.
 
 
 THANKS,
+
 ANJI BABU,
+
 IIT KANPUR,
+
 INDIA.
