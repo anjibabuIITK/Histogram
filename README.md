@@ -8,9 +8,9 @@ U have to use follow these to run this histogram code
 gfortran histogram.f90
 
 ./a.out
-ENTER input_file name and OUTPUT_file names as inputs
+ENTER input_file name 
 
-Tnen it will store distribution data into given output file.
+Tnen it will store distribution data into file named "HISTOGRAM"
  
 plot that data by using any plotting package (gnuplot, xmgrace ..etc.)
 

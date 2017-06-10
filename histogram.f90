@@ -10,11 +10,12 @@ PROGRAM histogram
   real*8, allocatable ::prob(:)
   integer*8           ::i,j,N,bin,nbin  !N=md_steps
   character (len=125) :: input_filename,output_filename
- PRINT*, 'ENTER input_filename ', '   output_filename'
- READ(*,*)input_filename, output_filename
+ PRINT*, 'ENTER input_filename '!, '   output_filename'
+ READ(*,*)input_filename !, output_filename
 !  print *, 'N=',N, ' xmin=',xmin, ' xmax =', xmax, ' width=',width, ' input_filename = ', trim(input_filename),' output_filename = ', trim(ouput_filename)
   open(12,file=trim(input_filename),STATUS="OLD")
-  open(13,file=trim(output_filename),STATUS="NEW")
+! open(13,file=trim(output_filename),STATUS="NEW")
+  open(13,file="HISTOGRAM",STATUS= "NEW")
   call get_steps(12,N)
   print*,"Total steps =",N
   call get_xmin_xmax(12,xmin,xmax,width)
@@ -36,7 +37,7 @@ PROGRAM histogram
   close(12)
   close(13)
   deallocate(prob)
-  print*, "The Distribution of given data has stored in given outputfile"
+  print*, "The Distribution of given data has stored in file named HISTOGRAM"
 !  print*,
 !  print*, "Plot 'x vs P(x')"
 END PROGRAM histogram
