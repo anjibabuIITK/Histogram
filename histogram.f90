@@ -5,39 +5,39 @@
 !
 !Writing Histogram 
 PROGRAM histogram
-  implicit none
-  real*8              ::x,xmin,xmax,width,u
-  real*8, allocatable ::prob(:)
-  integer*8           ::i,j,N,bin,nbin  !N=md_steps
-  character (len=125) :: input_filename,output_filename
+ IMPLICIT NONE
+ REAL*8              ::x,xmin,xmax,width,u
+ REAL*8, ALLOCATABLE ::prob(:)
+ INTEGER*8           ::i,j,N,bin,nbin  !N=md_steps
+ CHARACTER (len=125) :: input_filename,output_filename
  PRINT*, 'ENTER input_filename '!, '   output_filename'
  READ(*,*)input_filename !, output_filename
 !  print *, 'N=',N, ' xmin=',xmin, ' xmax =', xmax, ' width=',width, ' input_filename = ', trim(input_filename),' output_filename = ', trim(ouput_filename)
-  open(12,file=trim(input_filename),STATUS="OLD")
-! open(13,file=trim(output_filename),STATUS="NEW")
-  open(13,file="HISTOGRAM",STATUS= "NEW")
-  call get_steps(12,N)
+  OPEN(12,file=trim(input_filename),STATUS="OLD")
+! OPEN(13,file=trim(output_filename),STATUS="NEW")
+  OPEN(13,file="HISTOGRAM",STATUS= "NEW")
+  CALL get_steps(12,N)
   print*,"Total steps =",N
-  call get_xmin_xmax(12,xmin,xmax,width)
-  print*, "xmin= ",xmin,"xmax=",xmax,"Width=",width
+  CALL get_xmin_xmax(12,xmin,xmax,width)
+  PRINT*, "xmin= ",xmin,"xmax=",xmax,"Width=",width
   nbin=nint(((xmax-xmin)/width)) + 1
-  print *, 'nbin =',nbin
-  allocate(prob(nbin+1))
+  PRINT*, 'nbin =',nbin
+  ALLOCATE(prob(nbin+1))
   prob = 0.0
-     do i=1,N
-        read(12,*)x
+     DO i=1,N
+        READ(12,*)x
         bin =int((x-xmin)/width)+1
-           if(bin < nbin+1)then
+           IF(bin < nbin+1)THEN
              prob(bin) = prob(bin) +1.00
-           end if
-     end do 
-     do j=1,nbin
-        write(13,*) real(j-1)*width+xmin, prob(j)/dfloat(N) !printing x vs P(x) vaules
-     end do
-  close(12)
-  close(13)
-  deallocate(prob)
-  print*, "The Distribution of given data has stored in file named HISTOGRAM"
+           END IF
+     END DO 
+     DO j=1,nbin
+        WRITE(13,*) real(j-1)*width+xmin, prob(j)/dfloat(N) !printing x vs P(x) vaules
+     END DO
+  CLOSE(12)
+  CLOSE(13)
+  DEALLOCATE(prob)
+  PRINT*, "The Distribution of given data has stored in file named HISTOGRAM"
 !  print*,
 !  print*, "Plot 'x vs P(x')"
 END PROGRAM histogram
