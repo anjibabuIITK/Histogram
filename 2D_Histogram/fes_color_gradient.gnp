@@ -1,0 +1,23 @@
+set contour both
+set cntrparam levels 20
+#set cntrparam levels incr -32,3,0
+#set palette defined ( 0.00 "green", 0.001 "blue", 0.002 "red", 0.003 "yellow" )
+splot [-180:180] [-180:180] 'HISTOGRAM.dat' us ($1*57.3):($2*57.3):4 w l
+set view 0,0
+set pm3d
+set hidden3d
+#set zrange [:-0.25]
+unset key
+set linetype 1 lw 0.5
+#set contour both one color
+set linetype 1 lc rgb "black"
+set colorbox vertical user origin 0.065, 0.30 size 0.02,0.42
+#set size 1,1.2
+#et xtics -0.6, 0.3, 1.1
+#et ytics -180, 60, 180
+unset ztics
+replot
+#set terminal postscript eps enhanced color font 'Arial,20'
+#set output "fes.ps"
+repl
+
